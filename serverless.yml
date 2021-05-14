@@ -10,6 +10,9 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
 
+provider:
+  name: aws
+
 functions:
   hello:
     handler: src/functions/hello.handle
