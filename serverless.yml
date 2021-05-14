@@ -3,3 +3,4 @@ service:
 
 plugins:
   - serverless-offline
+  - serverless-webpack
