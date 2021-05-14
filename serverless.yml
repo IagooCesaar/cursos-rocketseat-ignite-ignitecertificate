@@ -1,0 +1,5 @@
+service:
+  name: ignitecertificate
+
+plugins:
+  - serverless-offline
