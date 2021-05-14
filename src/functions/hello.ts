@@ -1,10 +1,11 @@
 
-export const handle = (event) => {
+export const handle = async (event) => {
+  console.log('Acessou o evento')
   return {
     statusCode: 201,
-    body: {
+    body: JSON.stringify({
       message: 'Hello World Ignite Serverless'
-    },
+    }),
     headers: {
       "Content-Type": "application/json"
     }
