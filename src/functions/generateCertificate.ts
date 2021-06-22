@@ -43,6 +43,25 @@ export const handle = async (event) => {
     medal,
   });
 
+  const browser = await chromium.puppeteer.launch({
+    headless: true,
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+  })
+  const page = await browser.newPage();
+  page.setContent(content);
+  const pdf = await page.pdf({
+    format: 'a4',
+    landscape: true,
+    printBackground: true,
+    preferCSSPageSize: true,
+  });
+  await browser.close();
+
+
+
+
   return { 
     statusCode: 201,
     body: JSON.stringify({
