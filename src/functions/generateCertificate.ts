@@ -1,13 +1,26 @@
+import { document } from '../utils/dynamodbClient';
+
+interface ICreateCertificate {
+  id: string;
+  name: string;
+  grade: string;
+}
 
 export const handle = async (event) => {
-  console.log('Acessou o evento')
-  return {
+  const { id, name, grade } = JSON.parse(event.body) as ICreateCertificate;
+
+  await document.put({
+    TableName: 'users_certificates',
+    Item: {id, name, grade}
+  }).promise();
+
+  return { 
     statusCode: 201,
     body: JSON.stringify({
-      message: 'Hello World Ignite Serverless'
+      message: "Certificate created!"      
     }),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     }
   }
 }
