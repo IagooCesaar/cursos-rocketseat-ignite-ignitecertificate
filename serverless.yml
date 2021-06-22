@@ -38,13 +38,13 @@ resources:
     dbCertificateUsers:
       Type: AWS::DynamoDB::Table
       Properties:
+        TableName: users_certificates
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
-        TableName: users_certificates
-        AttributesDefinitions:
+        AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
-        KeyScheme:
+        KeySchema:
           - AttributeName: id
             KeyType: HASH
