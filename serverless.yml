@@ -23,3 +23,19 @@ functions:
           path: /hello
           method: GET
           cors: true
+
+resources:
+  Resources:
+    dbCertificateUsers:
+      Type: AWS::DynamoDB::Table
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      Properties:
+        TableName: users_certificates
+        AttributesDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeyScheme:
+          - AttributeName: id
+            KeyType: HASH
