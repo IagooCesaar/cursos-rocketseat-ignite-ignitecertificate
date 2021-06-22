@@ -9,6 +9,14 @@ custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
+  dynamodb:
+    stages:
+      - dev
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
 
 provider:
   name: aws
