@@ -54,6 +54,7 @@ export const handle = async (event) => {
   const pdf = await page.pdf({
     format: 'a4',
     landscape: true,
+    path: process.env.IS_OFFLINE ? "certificate.pdf" : null,
     printBackground: true,
     preferCSSPageSize: true,
   });
