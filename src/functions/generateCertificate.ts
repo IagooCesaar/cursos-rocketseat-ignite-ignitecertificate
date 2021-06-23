@@ -50,7 +50,7 @@ export const handle = async (event) => {
     executablePath: await chromium.executablePath,
   })
   const page = await browser.newPage();
-  page.setContent(content);
+  await page.setContent(content);
   const pdf = await page.pdf({
     format: 'a4',
     landscape: true,
