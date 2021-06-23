@@ -73,7 +73,8 @@ export const handle = async (event) => {
   return { 
     statusCode: 201,
     body: JSON.stringify({
-      message: "Certificate created!"      
+      message: "Certificate created!",
+      url: `https://ignitecertificate-generetadecertificates.s3.sa-east-1.amazonaws.com/${id}.pdf`,
     }),
     headers: {
       "Content-Type": "application/json",
