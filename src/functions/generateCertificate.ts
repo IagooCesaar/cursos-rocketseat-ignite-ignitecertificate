@@ -5,6 +5,7 @@ import handlebars from 'handlebars';
 import dayjs from 'dayjs';
 import { S3 } from 'aws-sdk';
 import { document } from '../utils/dynamodbClient';
+import { APIGatewayProxyHandler } from 'aws-lambda';
 
 interface ICreateCertificate {
   id: string;
@@ -25,7 +26,7 @@ const compileTemplate = async (data: ITemplateParams ) => {
   return handlebars.compile(html)(data);
 }
 
-export const handle = async (event) => {
+export const handle: APIGatewayProxyHandler = async (event) => {
   const { id, name, grade } = JSON.parse(event.body) as ICreateCertificate;
 
   await document.put({
